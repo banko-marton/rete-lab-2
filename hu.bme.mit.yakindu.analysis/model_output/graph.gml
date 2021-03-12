@@ -176,7 +176,7 @@ graph
 			LabelGraphics
 			[
 				text	"
-	name = whiteV2
+	name = white
 	static = false
 	id = example wh...
 	direction = ::in
@@ -250,7 +250,7 @@ graph
 			LabelGraphics
 			[
 				text	"
-	name = blackV2
+	name = black
 	static = false
 	id = example bl...
 	direction = ::in
@@ -324,7 +324,7 @@ graph
 			LabelGraphics
 			[
 				text	"
-	name = whiteTimeV...
+	name = whiteTime
 	static = false
 	id = example wh...
 	const = false
@@ -1075,7 +1075,7 @@ graph
 			id	30
 			graphics
 			[
-				w	192.50000000000003
+				w	177.10000000000002
 				h	54
 				type	"rectangle"
 				fill	"#FFFFFF"
@@ -1096,7 +1096,7 @@ graph
 			LabelGraphics
 			[
 				text	"
-	specification = blackV2
+	specification = black
 	documentation = 
 	"
 				fontSize	14
@@ -1656,7 +1656,7 @@ graph
 			id	46
 			graphics
 			[
-				w	192.50000000000003
+				w	177.10000000000002
 				h	54
 				type	"rectangle"
 				fill	"#FFFFFF"
@@ -1677,7 +1677,7 @@ graph
 			LabelGraphics
 			[
 				text	"
-	specification = whiteV2
+	specification = white
 	documentation = 
 	"
 				fontSize	14

@@ -83,7 +83,7 @@ public class Main {
 				EventDefinition e = (EventDefinition) content;
 				if(e.getDirection() == Direction.IN) { 
 				//System.out.println(e.getName());
-					System.out.println("			case \""+e.getName()+"\": s.raise"+e.getName()+"(); break;");
+					System.out.println("			case \""+e.getName()+"\": s.raise"+capitalize(e.getName())+"(); break;");
 				}	
 			}
 		}
@@ -98,7 +98,7 @@ public class Main {
 			if(content instanceof VariableDefinition) {
 				VariableDefinition v = (VariableDefinition) content;
 				//System.out.println(v.getName());
-				System.out.println("		System.out.println(\""+v.getName()+" = \" + s.getSCInterface().get"+v.getName()+"();");
+				System.out.println("		System.out.println(\""+v.getName()+" = \" + s.getSCInterface().get"+capitalize(capitalizeTimeStr(v.getName()))+"());");
 			}
 		}
 		System.out.println("	}");
@@ -112,5 +112,16 @@ public class Main {
 		manager.saveFile("model_output/graph.gml", content);
 	}
 	
+	//String első betűjét nagyra cseréli
+	private static String capitalize(String str) {
+		return str = str.substring(0,1).toUpperCase() + str.substring(1);
+	}
+	
+	//String végi "time" részt "Time"-ra cseréli
+	private static String capitalizeTimeStr (String str) {
+		str = str.substring(0, str.length()-4);
+		str = str.concat("Time");
+		return str;
+	}
 	
 }
