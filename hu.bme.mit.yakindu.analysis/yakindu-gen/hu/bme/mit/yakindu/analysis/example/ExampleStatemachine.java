@@ -12,26 +12,26 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			start = true;
 		}
 		
-		private boolean white;
+		private boolean whiteV2;
 		
-		public void raiseWhite() {
-			white = true;
+		public void raiseWhiteV2() {
+			whiteV2 = true;
 		}
 		
-		private boolean black;
+		private boolean blackV2;
 		
-		public void raiseBlack() {
-			black = true;
+		public void raiseBlackV2() {
+			blackV2 = true;
 		}
 		
-		private long whiteTime;
+		private long whiteTimeV2;
 		
-		public long getWhiteTime() {
-			return whiteTime;
+		public long getWhiteTimeV2() {
+			return whiteTimeV2;
 		}
 		
-		public void setWhiteTime(long value) {
-			this.whiteTime = value;
+		public void setWhiteTimeV2(long value) {
+			this.whiteTimeV2 = value;
 		}
 		
 		private long blackTime;
@@ -46,8 +46,8 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		
 		protected void clearEvents() {
 			start = false;
-			white = false;
-			black = false;
+			whiteV2 = false;
+			blackV2 = false;
 		}
 	}
 	
@@ -84,7 +84,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		}
 		clearEvents();
 		clearOutEvents();
-		sCInterface.setWhiteTime(60);
+		sCInterface.setWhiteTimeV2(60);
 		
 		sCInterface.setBlackTime(60);
 	}
@@ -207,20 +207,20 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		sCInterface.raiseStart();
 	}
 	
-	public void raiseWhite() {
-		sCInterface.raiseWhite();
+	public void raiseWhiteV2() {
+		sCInterface.raiseWhiteV2();
 	}
 	
-	public void raiseBlack() {
-		sCInterface.raiseBlack();
+	public void raiseBlackV2() {
+		sCInterface.raiseBlackV2();
 	}
 	
-	public long getWhiteTime() {
-		return sCInterface.getWhiteTime();
+	public long getWhiteTimeV2() {
+		return sCInterface.getWhiteTimeV2();
 	}
 	
-	public void setWhiteTime(long value) {
-		sCInterface.setWhiteTime(value);
+	public void setWhiteTimeV2(long value) {
+		sCInterface.setWhiteTimeV2(value);
 	}
 	
 	public long getBlackTime() {
@@ -345,7 +345,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		
 		if (try_transition) {
 			if (react()==false) {
-				if (sCInterface.black) {
+				if (sCInterface.blackV2) {
 					exitSequence_main_region_Black();
 					enterSequence_main_region_White_default();
 				} else {
@@ -368,13 +368,13 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		
 		if (try_transition) {
 			if (react()==false) {
-				if (sCInterface.white) {
+				if (sCInterface.whiteV2) {
 					exitSequence_main_region_White();
 					enterSequence_main_region_Black_default();
 				} else {
 					if (timeEvents[1]) {
 						exitSequence_main_region_White();
-						sCInterface.setWhiteTime(sCInterface.getWhiteTime() - 1);
+						sCInterface.setWhiteTimeV2(sCInterface.getWhiteTimeV2() - 1);
 						
 						enterSequence_main_region_White_default();
 					} else {
