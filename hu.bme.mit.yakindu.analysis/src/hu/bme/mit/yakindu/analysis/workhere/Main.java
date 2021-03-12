@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.junit.Test;
 import org.yakindu.sct.model.sgraph.State;
 import org.yakindu.sct.model.sgraph.Statechart;
+import org.yakindu.sct.model.sgraph.Transition;
 
 import hu.bme.mit.model2gml.Model2GML;
 import hu.bme.mit.yakindu.analysis.modelmanager.ModelManager;
@@ -25,12 +26,33 @@ public class Main {
 		// Reading model
 		Statechart s = (Statechart) root;
 		TreeIterator<EObject> iterator = s.eAllContents();
+		int idx = 1;
 		while (iterator.hasNext()) {
 			EObject content = iterator.next();
 			if(content instanceof State) {
 				State state = (State) content;
-				System.out.println(state.getName());
+				
+				//Ha névtelen az állapot
+				if(state.getName() == "") {
+					//System.out.println("Itt egy üres nevű állapot");
+					state.setName("Nevtelen" + idx);
+					idx++;
+				}
+				
+				System.out.print(state.getName());
+				
+				// Csapdaállapotok kiírása
+				if(state.getOutgoingTransitions().isEmpty())
+					System.out.print(" <-- !!! Ez egy csapda állapot !!!");
+				System.out.println("");
+				
 			}
+			//Tranzíciók kiírása
+			if(content instanceof Transition) {
+				Transition t = (Transition) content;
+				System.out.println(t.getSource().getName() + " -> " + t.getTarget().getName());
+			}
+			
 		}
 		
 		// Transforming the model into a graph representation
